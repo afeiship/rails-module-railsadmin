@@ -27,15 +27,20 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new
-    export
+    # export
     bulk_delete
     show
     edit
     delete
-    show_in_app
+    # show_in_app
 
     ## With an audit adapter, you can add:
     # history_index
     # history_show
   end
+
+  # 
+  config.main_app_name = ["Cool app", "BackOffice"]
+  # or something more dynamic
+  config.main_app_name = Proc.new { |controller| [ "Cool app", "BackOffice - #{controller.params[:action].try(:titleize)}" ] }
 end
